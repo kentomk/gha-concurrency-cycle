@@ -6,7 +6,7 @@ cd "$project_root"
 
 jq -e '
   .schemaVersion == 2
-  and .action == "create"
+  and ((.action == "create" or .action == "update") or .action == "update")
   and .owner == "kento-matsuki"
   and (.name | type == "string" and test("^[a-z0-9][a-z0-9-]{1,62}$"))
   and (.description | type == "string" and length >= 20 and length <= 160)
