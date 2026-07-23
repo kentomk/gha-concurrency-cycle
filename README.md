@@ -53,15 +53,20 @@ JSON output uses schema version 1 and includes `diagnostics` and `unknowns` arra
 
 ## GitHub Action
 
-Pin the Action to an immutable commit SHA in production. A release tag is shown here for readability:
+Pin the Action to the immutable commit for the reviewed release:
 
 ```yaml
-- uses: kentomk/gha-concurrency-cycle@v0.1.0
+- uses: kentomk/gha-concurrency-cycle@9f2759fab148fd9d2b4a4c964e7b7b76b54e33cd # v0.1.0
   with:
     root: .
 ```
 
-The composite Action pins `actions/setup-go` to an immutable commit, selects the version in this revision's `go.mod`, builds the CLI from the checked-out Action source, and runs the same exit contract documented above. It supports GitHub-hosted Linux and macOS runners; Windows and self-hosted runners are outside the v0.1 support contract.
+The comment records the release associated with the reviewed commit; the 40-character
+SHA is the security boundary. The composite Action pins `actions/setup-go` to an
+immutable commit, selects the version in this revision's `go.mod`, builds the CLI
+from the checked-out Action source, and runs the same exit contract documented
+above. It supports GitHub-hosted Linux and macOS runners; Windows and self-hosted
+runners are outside the v0.1 support contract.
 
 For a standalone install, use the source release with:
 

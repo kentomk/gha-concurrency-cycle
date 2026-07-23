@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Replace the copy-ready GitHub Action tag example with the verified immutable
+  `v0.1.0` commit and enforce that contract in the publisher gate.
 - Add an owner-repairable release workflow and make all four archives byte-reproducible with `SHA256SUMS`.
 - Build the composite Action from its pinned source revision so it no longer requires unavailable release binary assets.
 - Mirror the publisher's tracked-file, payload-size, credential-path, and credential-content limits in the local release gate.
