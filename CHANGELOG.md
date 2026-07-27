@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Fix the copy-ready GitHub Actions workflow to check out the caller repository
+  before scanning, and include least-privilege `contents: read` permissions.
+
 - Replace the copy-ready GitHub Action tag example with the verified immutable
   `v0.1.0` commit and enforce that contract in the publisher gate.
 - Add an owner-repairable release workflow and make all four archives byte-reproducible with `SHA256SUMS`.

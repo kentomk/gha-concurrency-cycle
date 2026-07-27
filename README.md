@@ -53,20 +53,36 @@ JSON output uses schema version 1 and includes `diagnostics` and `unknowns` arra
 
 ## GitHub Action
 
-Pin the Action to the immutable commit for the reviewed release:
+Copy this workflow into `.github/workflows/concurrency-preflight.yml`. The
+checkout step is required: the analyzer reads the caller repository from the
+workspace.
 
 ```yaml
-- uses: kentomk/gha-concurrency-cycle@9f2759fab148fd9d2b4a4c964e7b7b76b54e33cd # v0.1.0
-  with:
-    root: .
+name: Concurrency preflight
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: kentomk/gha-concurrency-cycle@9f2759fab148fd9d2b4a4c964e7b7b76b54e33cd # v0.1.0
+        with:
+          root: .
 ```
 
-The comment records the release associated with the reviewed commit; the 40-character
-SHA is the security boundary. The composite Action pins `actions/setup-go` to an
-immutable commit, selects the version in this revision's `go.mod`, builds the CLI
-from the checked-out Action source, and runs the same exit contract documented
-above. It supports GitHub-hosted Linux and macOS runners; Windows and self-hosted
-runners are outside the v0.1 support contract.
+Both Action references use immutable commits. The comments record their reviewed
+releases; the 40-character SHAs are the security boundaries. The composite
+Action pins `actions/setup-go` to an immutable commit, selects the version in
+this revision's `go.mod`, builds the CLI from the checked-out Action source, and
+runs the same exit contract documented above. It supports GitHub-hosted Linux
+and macOS runners; Windows and self-hosted runners are outside the v0.1 support
+contract.
 
 For a standalone install, use the source release with:
 

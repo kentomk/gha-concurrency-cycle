@@ -48,9 +48,16 @@ grep -Eq '^## Quick[[:space:]]*start\b' README.md
 grep -q 'Matsuki Kento' README.md
 grep -q '@kentomk' README.md
 grep -Eiq 'AI|automated' README.md
+grep -Eq 'uses: actions/checkout@[0-9a-f]{40}([[:space:]]|$)' README.md
 grep -Eq 'uses: kentomk/gha-concurrency-cycle@[0-9a-f]{40}([[:space:]]|$)' README.md
-if grep -Eq 'uses: kentomk/gha-concurrency-cycle@(main|master|v[0-9])' README.md; then
-  echo 'mutable gha-concurrency-cycle Action reference found in README' >&2
+if grep -Eq 'uses: (actions/checkout|kentomk/gha-concurrency-cycle)@(main|master|v[0-9])' README.md; then
+  echo 'mutable copy-ready Action reference found in README' >&2
+  exit 1
+fi
+checkout_line=$(grep -n -m1 'uses: actions/checkout@' README.md | cut -d: -f1)
+preflight_line=$(grep -n -m1 'uses: kentomk/gha-concurrency-cycle@' README.md | cut -d: -f1)
+if [ "$checkout_line" -ge "$preflight_line" ]; then
+  echo 'copy-ready workflow must checkout the caller repository before preflight' >&2
   exit 1
 fi
 
