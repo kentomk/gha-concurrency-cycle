@@ -78,9 +78,9 @@ jobs:
 
 Both Action references use immutable commits. The comments record their reviewed
 releases; the 40-character SHAs are the security boundaries. The composite
-Action pins `actions/setup-go` to an immutable commit, selects the version in
-this revision's `go.mod`, builds the CLI from the checked-out Action source, and
-runs the same exit contract documented above. It supports GitHub-hosted Linux
+Action pins `actions/setup-go` to an immutable commit and Go `1.26.5`, builds the
+CLI from the checked-out Action source, and runs the same exit contract documented
+above. CI and release workflows use the same reviewed Go patch. It supports GitHub-hosted Linux
 and macOS runners; Windows and self-hosted runners are outside the v0.1 support
 contract.
 

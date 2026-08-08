@@ -67,6 +67,12 @@ if grep -Eq 'uses: actions/(checkout|setup-go)@v[0-9]' .github/workflows/ci.yml;
   echo 'mutable GitHub Action reference found' >&2
   exit 1
 fi
+grep -Fq "go-version: '1.26.5'" action.yml
+if grep -Fq 'go-version-file:' action.yml; then
+  echo 'Action must use the reviewed exact Go patch' >&2
+  exit 1
+fi
+grep -Fq "go-version: '1.26.5'" .github/workflows/ci.yml
 
 test -x scripts/publisher-gate.sh
 sh -n scripts/publisher-gate.sh

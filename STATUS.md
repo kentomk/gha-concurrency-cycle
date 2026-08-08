@@ -235,6 +235,12 @@ README、CLI reference、GitHub Action usage、diagnostic reference、limitation
 
 ## Maintenance history
 
+### 2026-08-08T09:47:00Z — Action toolchain reproducibility repair
+
+- The composite Action resolved Go from `go.mod`, while CI and release used mutable `1.24.x` and the publisher gate used reviewed Go `1.26.5`; this allowed source-built Action and release binaries to diverge after toolchain changes.
+- Pin the Action, CI, and release workflow to exact Go `1.26.5`, document the shared contract, and add regressions rejecting `go-version-file` and mutable patch selectors.
+- The self-contained publisher gate passed with race, vet, policy, Action, package, checksum, and payload checks. Public publication and current-main CI confirmation remain the next distribution step.
+
 ### 2026-08-08T06:56:21Z — published security policy alignment
 
 - Broker status confirmed current main CI success, no open Issue/PR, and complete v0.1.0 release assets.

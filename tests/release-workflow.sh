@@ -16,3 +16,8 @@ grep -Fq 'contents: write' "$workflow"
 grep -Fq 'gh release upload "$TAG_NAME"' "$workflow"
 grep -Fq 'dist/SHA256SUMS' "$workflow"
 grep -Fq -- '--clobber' "$workflow"
+grep -Fq "go-version: '1.26.5'" "$workflow"
+if grep -Fq "go-version: '1.24.x'" "$workflow"; then
+  echo 'mutable Go patch selector found in release workflow' >&2
+  exit 1
+fi
