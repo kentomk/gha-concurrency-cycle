@@ -90,6 +90,10 @@ For a standalone install, use the source release with:
 go install github.com/kentomk/gha-concurrency-cycle/cmd/gha-concurrency-cycle@v0.1.1
 ```
 
+The repository also includes `scripts/install.sh` for checksum-verified archive
+installation in CI or a shell environment. It accepts only numeric `X.Y.Z`
+release versions and fails before any download or file creation for other input.
+
 The release also provides checksum-indexed Linux and macOS archives for amd64
 and arm64. Download them from the [v0.1.1 release](https://github.com/kentomk/gha-concurrency-cycle/releases/tag/v0.1.1) and verify the selected archive before extraction:
 

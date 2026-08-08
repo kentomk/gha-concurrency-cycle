@@ -17,3 +17,12 @@ installed=$(GHA_CONCURRENCY_CYCLE_ASSET_DIR="$smoke_root/assets" \
 
 test -x "$installed"
 test "$("$installed" version)" = "v0.1.1"
+
+for invalid_version in '../0.1.1' '0.1' '0.1.1.1' '0.1.x' '0..1'; do
+  if GHA_CONCURRENCY_CYCLE_ASSET_DIR="$smoke_root/assets" \
+    RUNNER_TEMP="$smoke_root/run" \
+    "$project_root/scripts/install.sh" "$invalid_version" >/dev/null 2>&1; then
+    echo "invalid version unexpectedly accepted: $invalid_version" >&2
+    exit 1
+  fi
+done

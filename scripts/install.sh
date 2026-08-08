@@ -4,6 +4,18 @@ set -eu
 version=${1:?usage: install.sh VERSION}
 version=${version#v}
 
+case "$version" in
+  ''|*[!0-9.]*|.*|*.|*..*)
+    echo "version must be a numeric X.Y.Z release (for example, 0.1.1)" >&2
+    exit 2
+    ;;
+esac
+version_parts=$(printf '%s\n' "$version" | awk -F. 'NF == 3 && $1 ~ /^[0-9]+$/ && $2 ~ /^[0-9]+$/ && $3 ~ /^[0-9]+$/ { print "ok" }')
+if [ "$version_parts" != ok ]; then
+  echo "version must be a numeric X.Y.Z release (for example, 0.1.1)" >&2
+  exit 2
+fi
+
 case "$(uname -s)" in
   Linux) os=linux ;;
   Darwin) os=darwin ;;
