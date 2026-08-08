@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Pin the installer smoke contract to the published CLI `version` output so release packaging and install verification cannot drift apart.
 - Fix the standalone installer to fetch and verify the published `SHA256SUMS`
   asset instead of the non-existent `checksums.txt` name, with a release-install
   regression test; keep the archive filename's `v` prefix aligned with releases.

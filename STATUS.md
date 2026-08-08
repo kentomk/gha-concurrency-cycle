@@ -235,6 +235,11 @@ README、CLI reference、GitHub Action usage、diagnostic reference、limitation
 
 ## Maintenance history
 
+### 2026-08-08T22:53:11Z — published installer contract reconciliation
+
+- Reconciled the earlier distribution observation against the broker's public status: public main `b0017668...` is the broker-generated commit containing local `df67f26`'s installer version assertion repair, and its CI is successful. The prior `distribution-blocked` classification was stale and is corrected to healthy published state.
+- Added a publisher-contract regression that requires the installer smoke test to assert the published CLI output `v0.1.1`, keeping archive installation verification aligned with the release binary contract. This is test-only behavior coverage; no runtime or support-matrix expansion.
+
 ### 2026-08-08T15:31:00Z — tag-pinned release repair
 
 - Fixed manual and `repository_dispatch` release repairs to check out the requested `tagName` instead of the dispatching commit. Added a non-empty tag guard and regression assertions so an older release tag cannot receive archives built from unrelated main content.

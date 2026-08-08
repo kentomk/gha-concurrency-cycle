@@ -86,6 +86,7 @@ grep -Fq 'grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -' README
 grep -Fq 'shasum -a 256 --check -' README.md
 grep -Fq 'SHA256SUMS' scripts/install.sh
 ! grep -Fq 'checksums.txt' scripts/install.sh
+grep -Fq 'test "$("$installed" version)" = "v0.1.1"' tests/install-script.sh
 grep -Fq 'The published' SECURITY.md
 grep -Fq 'v0.1.1' SECURITY.md
 if grep -Fq 'not published yet' SECURITY.md; then
