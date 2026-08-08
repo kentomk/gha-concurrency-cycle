@@ -76,11 +76,11 @@ grep -Fq "go-version: '1.26.5'" .github/workflows/ci.yml
 
 test -x scripts/publisher-gate.sh
 sh -n scripts/publisher-gate.sh
-grep -Fq 'releases/tag/v0.1.0' README.md
+grep -Fq 'releases/tag/v0.1.1' README.md
 grep -Fq 'grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -' README.md
 grep -Fq 'shasum -a 256 --check -' README.md
 grep -Fq 'The published' SECURITY.md
-grep -Fq 'v0.1.0' SECURITY.md
+grep -Fq 'v0.1.1' SECURITY.md
 if grep -Fq 'not published yet' SECURITY.md; then
   echo 'SECURITY.md still claims the public project is unpublished' >&2
   exit 1

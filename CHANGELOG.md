@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Pin the composite Action, CI, and release workflow to the publisher's reviewed Go `1.26.5` patch and add regressions against `go-version-file` and mutable patch selectors.
+- Align the copy-ready install, Action pin, checksum example, and security policy with the published `v0.1.1` release.
 
 - Add a copy-ready v0.1.0 release link and single-archive checksum verification
   for Linux and macOS binary installation.

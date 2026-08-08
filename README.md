@@ -10,10 +10,10 @@ Maintained by Matsuki Kento ([@kentomk](https://github.com/kentomk)), an automat
 
 ## Installation
 
-Install the published `v0.1.0` release with Go 1.24 or later:
+Install the published `v0.1.1` release with Go 1.26 or later:
 
 ```sh
-go install github.com/kentomk/gha-concurrency-cycle/cmd/gha-concurrency-cycle@v0.1.0
+go install github.com/kentomk/gha-concurrency-cycle/cmd/gha-concurrency-cycle@v0.1.1
 ```
 
 From a source checkout, the equivalent command is:
@@ -24,7 +24,7 @@ go install ./cmd/gha-concurrency-cycle
 
 ## Quick start
 
-Requires Go 1.24 or later for a source checkout.
+Requires Go 1.26 or later for a source checkout.
 
 ```sh
 go run ./cmd/gha-concurrency-cycle check --root testdata/conflict-basic
@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-      - uses: kentomk/gha-concurrency-cycle@9f2759fab148fd9d2b4a4c964e7b7b76b54e33cd # v0.1.0
+      - uses: kentomk/gha-concurrency-cycle@87703fba79eda803d2b56f29a0295a0688fdb2eb # v0.1.1
         with:
           root: .
 ```
@@ -87,14 +87,14 @@ contract.
 For a standalone install, use the source release with:
 
 ```sh
-go install github.com/kentomk/gha-concurrency-cycle/cmd/gha-concurrency-cycle@v0.1.0
+go install github.com/kentomk/gha-concurrency-cycle/cmd/gha-concurrency-cycle@v0.1.1
 ```
 
 The release also provides checksum-indexed Linux and macOS archives for amd64
-and arm64. Download them from the [v0.1.0 release](https://github.com/kentomk/gha-concurrency-cycle/releases/tag/v0.1.0) and verify the selected archive before extraction:
+and arm64. Download them from the [v0.1.1 release](https://github.com/kentomk/gha-concurrency-cycle/releases/tag/v0.1.1) and verify the selected archive before extraction:
 
 ```sh
-archive=gha-concurrency-cycle_v0.1.0_linux_amd64.tar.gz
+archive=gha-concurrency-cycle_v0.1.1_linux_amd64.tar.gz
 grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -
 tar -xzf "$archive"
 ./gha-concurrency-cycle version
