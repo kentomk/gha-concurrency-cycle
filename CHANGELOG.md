@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Make manual and broker-triggered release repairs check out the requested tag before building assets.
 - Pin the composite Action, CI, and release workflow to the publisher's reviewed Go `1.26.5` patch and add regressions against `go-version-file` and mutable patch selectors.
 - Align the copy-ready install, Action pin, checksum example, and security policy with the published `v0.1.1` release.
 

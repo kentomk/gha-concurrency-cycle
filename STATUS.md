@@ -235,6 +235,10 @@ README、CLI reference、GitHub Action usage、diagnostic reference、limitation
 
 ## Maintenance history
 
+### 2026-08-08T15:31:00Z — tag-pinned release repair
+
+- Fixed manual and `repository_dispatch` release repairs to check out the requested `tagName` instead of the dispatching commit. Added a non-empty tag guard and regression assertions so an older release tag cannot receive archives built from unrelated main content.
+
 ### 2026-08-08T09:47:00Z — Action toolchain reproducibility repair
 
 - The composite Action resolved Go from `go.mod`, while CI and release used mutable `1.24.x` and the publisher gate used reviewed Go `1.26.5`; this allowed source-built Action and release binaries to diverge after toolchain changes.
