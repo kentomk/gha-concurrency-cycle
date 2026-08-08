@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add a copy-ready v0.1.0 release link and single-archive checksum verification
+  for Linux and macOS binary installation.
 - Fix the copy-ready GitHub Actions workflow to check out the caller repository
   before scanning, and include least-privilege `contents: read` permissions.
 

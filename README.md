@@ -91,7 +91,18 @@ go install github.com/kentomk/gha-concurrency-cycle/cmd/gha-concurrency-cycle@v0
 ```
 
 The release also provides checksum-indexed Linux and macOS archives for amd64
-and arm64. Verify the selected archive against `SHA256SUMS` before extraction.
+and arm64. Download them from the [v0.1.0 release](https://github.com/kentomk/gha-concurrency-cycle/releases/tag/v0.1.0) and verify the selected archive before extraction:
+
+```sh
+archive=gha-concurrency-cycle_v0.1.0_linux_amd64.tar.gz
+grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -
+tar -xzf "$archive"
+./gha-concurrency-cycle version
+```
+
+On macOS, use `shasum -a 256 --check -` instead of `sha256sum --check --strict -`.
+Checking only the selected manifest row lets you verify one downloaded archive
+without first downloading the other three platform archives.
 
 ## Supported in this increment
 

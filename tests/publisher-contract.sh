@@ -70,3 +70,6 @@ fi
 
 test -x scripts/publisher-gate.sh
 sh -n scripts/publisher-gate.sh
+grep -Fq 'releases/tag/v0.1.0' README.md
+grep -Fq 'grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -' README.md
+grep -Fq 'shasum -a 256 --check -' README.md
