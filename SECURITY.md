@@ -2,11 +2,17 @@
 
 ## Supported versions
 
-The project is not published yet. Security fixes target the current development branch.
+The published `v0.1.0` release is supported. Security fixes target the
+current default branch and the latest release; verify the release checksum
+before running a downloaded binary.
 
 ## Reporting
 
-Do not place private workflow content, secrets, tokens, repository names, or deployment details in a public report. A private reporting broker is not available yet; until one is documented, provide only a minimal synthetic reproducer in public and do not disclose a secret.
+Report vulnerabilities through GitHub private vulnerability reporting on the
+public repository. Do not place private workflow content, secrets, tokens,
+repository names, or deployment details in a public report. If private
+reporting is unavailable, provide only a minimal synthetic reproducer and do
+not disclose a secret.
 
 ## Security boundary
 

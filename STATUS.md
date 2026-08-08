@@ -235,6 +235,12 @@ README、CLI reference、GitHub Action usage、diagnostic reference、limitation
 
 ## Maintenance history
 
+### 2026-08-08T06:56:21Z — published security policy alignment
+
+- Broker status confirmed current main CI success, no open Issue/PR, and complete v0.1.0 release assets.
+- Synchronized `SECURITY.md` with the published v0.1.0 release and private vulnerability reporting, retaining a minimal-reproducer fallback.
+- Added publisher regression checks for the supported version and stale unpublished wording; public main CI must pass after broker publication.
+
 ### 2026-08-08T04:42:00Z — release archive verification funnel repair
 
 - Current broker status confirmed main CI success, no open Issue／PR, and five complete v0.1.0 release assets. A prior blocked snapshot was stale; current public main is healthy.
