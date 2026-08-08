@@ -50,7 +50,11 @@ grep -q '@kentomk' README.md
 grep -Eiq 'AI|automated' README.md
 grep -Eq 'uses: actions/checkout@[0-9a-f]{40}([[:space:]]|$)' README.md
 grep -Eq 'uses: kentomk/gha-concurrency-cycle@[0-9a-f]{40}([[:space:]]|$)' README.md
-grep -Fq 'uses: kentomk/gha-concurrency-cycle@9fb3b678261795ce891bed8079e7ea8ed47c077e # v0.1.1' README.md
+grep -Fq 'uses: kentomk/gha-concurrency-cycle@de54781570e1255f8cab65d84fdd34a27371fe85 # v0.1.1' README.md
+if grep -Fq 'uses: kentomk/gha-concurrency-cycle@9fb3b678261795ce891bed8079e7ea8ed47c077e' README.md; then
+  echo 'publisher contract: README still pins the superseded public Action revision' >&2
+  exit 1
+fi
 if grep -Eq 'uses: (actions/checkout|kentomk/gha-concurrency-cycle)@(main|master|v[0-9])' README.md; then
   echo 'mutable copy-ready Action reference found in README' >&2
   exit 1
