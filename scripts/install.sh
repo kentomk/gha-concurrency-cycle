@@ -16,21 +16,21 @@ case "$(uname -m)" in
   *) echo "unsupported architecture: $(uname -m)" >&2; exit 2 ;;
 esac
 
-asset="gha-concurrency-cycle_${version}_${os}_${arch}.tar.gz"
+asset="gha-concurrency-cycle_v${version}_${os}_${arch}.tar.gz"
 install_root=${RUNNER_TEMP:-${TMPDIR:-/tmp}}/gha-concurrency-cycle/${version}/${os}_${arch}
 archive=$install_root/$asset
-checksums=$install_root/checksums.txt
+checksums=$install_root/SHA256SUMS
 mkdir -p "$install_root"
 
 if [ -n "${GHA_CONCURRENCY_CYCLE_ASSET_DIR:-}" ]; then
   cp "$GHA_CONCURRENCY_CYCLE_ASSET_DIR/$asset" "$archive"
-  cp "$GHA_CONCURRENCY_CYCLE_ASSET_DIR/checksums.txt" "$checksums"
+  cp "$GHA_CONCURRENCY_CYCLE_ASSET_DIR/SHA256SUMS" "$checksums"
 else
   base_url="https://github.com/kentomk/gha-concurrency-cycle/releases/download/v${version}"
   curl --fail --silent --show-error --location --proto '=https' --tlsv1.2 \
     "$base_url/$asset" --output "$archive"
   curl --fail --silent --show-error --location --proto '=https' --tlsv1.2 \
-    "$base_url/checksums.txt" --output "$checksums"
+    "$base_url/SHA256SUMS" --output "$checksums"
 fi
 
 expected=$(awk -v name="$asset" '$2 == name { print $1 }' "$checksums")

@@ -84,6 +84,8 @@ sh -n scripts/publisher-gate.sh
 grep -Fq 'releases/tag/v0.1.1' README.md
 grep -Fq 'grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -' README.md
 grep -Fq 'shasum -a 256 --check -' README.md
+grep -Fq 'SHA256SUMS' scripts/install.sh
+! grep -Fq 'checksums.txt' scripts/install.sh
 grep -Fq 'The published' SECURITY.md
 grep -Fq 'v0.1.1' SECURITY.md
 if grep -Fq 'not published yet' SECURITY.md; then

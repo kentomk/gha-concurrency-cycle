@@ -12,6 +12,7 @@ tests/publisher-contract.sh
 tests/publisher-payload.sh
 tests/action-smoke.sh
 tests/release-package.sh
+tests/install-script.sh
 tests/release-workflow.sh
 for tag in v0.0.1 v12.34.567; do
   test "$(scripts/validate-release-tag.sh "$tag")" = "$tag"

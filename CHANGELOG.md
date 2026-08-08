@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Fix the standalone installer to fetch and verify the published `SHA256SUMS`
+  asset instead of the non-existent `checksums.txt` name, with a release-install
+  regression test; keep the archive filename's `v` prefix aligned with releases.
 - Pin the copy-ready composite Action example to the current successful public main and reject the superseded revision in the publisher contract.
 - Make manual and broker-triggered release repairs check out the requested tag before building assets.
 - Pin the composite Action, CI, and release workflow to the publisher's reviewed Go `1.26.5` patch and add regressions against `go-version-file` and mutable patch selectors.
