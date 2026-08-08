@@ -33,6 +33,7 @@ jobs:
           TAG_NAME: ${{ github.event.release.tag_name || inputs.tagName || github.event.client_payload.tagName }}
         run: |
           set -eu
+          scripts/validate-release-tag.sh "$TAG_NAME"
           SOURCE_DATE_EPOCH="$(git show -s --format=%ct HEAD)"
           export SOURCE_DATE_EPOCH
           scripts/package-release.sh "$TAG_NAME" dist
@@ -43,6 +44,7 @@ jobs:
           TAG_NAME: ${{ github.event.release.tag_name || inputs.tagName || github.event.client_payload.tagName }}
         run: |
           set -eu
+          scripts/validate-release-tag.sh "$TAG_NAME" >/dev/null
           gh release upload "$TAG_NAME" \
             "dist/gha-concurrency-cycle_${TAG_NAME}_linux_amd64.tar.gz" \
             "dist/gha-concurrency-cycle_${TAG_NAME}_linux_arm64.tar.gz" \
