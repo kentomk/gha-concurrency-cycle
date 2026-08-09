@@ -50,8 +50,8 @@ grep -q '@kentomk' README.md
 grep -Eiq 'AI|automated' README.md
 grep -Eq 'uses: actions/checkout@[0-9a-f]{40}([[:space:]]|$)' README.md
 grep -Eq 'uses: kentomk/gha-concurrency-cycle@[0-9a-f]{40}([[:space:]]|$)' README.md
-grep -Fq 'uses: kentomk/gha-concurrency-cycle@7126695735b388399a765a9dde4398abd2f20e33 # v0.1.1' README.md
-if grep -Fq 'uses: kentomk/gha-concurrency-cycle@de54781570e1255f8cab65d84fdd34a27371fe85' README.md; then
+grep -Fq 'uses: kentomk/gha-concurrency-cycle@7cda783ba1a5fc8609775df251f970fcf0dee214 # v0.1.1' README.md
+if grep -Fq 'uses: kentomk/gha-concurrency-cycle@7126695735b388399a765a9dde4398abd2f20e33' README.md; then
   echo 'publisher contract: README still pins the superseded public Action revision' >&2
   exit 1
 fi
