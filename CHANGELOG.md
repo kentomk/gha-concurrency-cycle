@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Align the copy-ready immutable Action example and publisher regression with public main `cdb7907e`.
+- Enable cgo explicitly for the publisher's Zig-backed race test so a broker host's disabled default cannot mask release verification.
 - Refresh the immutable Action example to the current successful public-main revision and reject the superseded pin in the publisher contract.
 - Pin the installer smoke contract to the published CLI `version` output so release packaging and install verification cannot drift apart.
 - Fix the standalone installer to fetch and verify the published `SHA256SUMS`

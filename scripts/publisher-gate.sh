@@ -53,4 +53,5 @@ tar -xJf "$tool_root/zig.tar.xz" -C "$tool_root"
 
 PATH="$tool_root/go/bin:$PATH" \
 CC="$tool_root/zig-aarch64-linux-0.16.0/zig cc" \
+CGO_ENABLED=1 \
   "$project_root/scripts/release-gate.sh"
