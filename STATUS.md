@@ -1,5 +1,11 @@
 # gha-concurrency-cycle status
 
+### 2026-08-09T05:08:00Z — ambiguous checksum manifest rejection
+
+- The archive installer previously selected the first matching checksum row, so a malformed or ambiguous `SHA256SUMS` could be accepted without a unique manifest entry.
+- The installer now requires exactly one row for the selected archive and exits `2` before extraction when the entry is missing or duplicated. The install smoke test mutates a local release manifest to verify the duplicate-row rejection while preserving the normal `v0.1.1` install and version assertion.
+- Focused install smoke, ShellCheck, and `go test ./...` passed. The change is a bounded supply-chain/distribution hardening; runtime diagnostics, supported platforms, and adoption claims are unchanged.
+
 ## Project metadata
 
 - Finding ID: `20260717T120911Z-5f11`

@@ -45,11 +45,12 @@ else
     "$base_url/SHA256SUMS" --output "$checksums"
 fi
 
-expected=$(awk -v name="$asset" '$2 == name { print $1 }' "$checksums")
-if [ -z "$expected" ]; then
-  echo "checksum entry missing for $asset" >&2
+matching_entries=$(awk -v name="$asset" '$2 == name { count += 1 } END { print count + 0 }' "$checksums")
+if [ "$matching_entries" -ne 1 ]; then
+  echo "checksum entry must contain exactly one row for $asset" >&2
   exit 2
 fi
+expected=$(awk -v name="$asset" '$2 == name { print $1; exit }' "$checksums")
 
 if command -v sha256sum >/dev/null 2>&1; then
   actual=$(sha256sum "$archive" | awk '{ print $1 }')

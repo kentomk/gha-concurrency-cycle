@@ -18,6 +18,16 @@ installed=$(GHA_CONCURRENCY_CYCLE_ASSET_DIR="$smoke_root/assets" \
 test -x "$installed"
 test "$("$installed" version)" = "v0.1.1"
 
+cp "$smoke_root/assets/SHA256SUMS" "$smoke_root/assets/SHA256SUMS.duplicate"
+cat "$smoke_root/assets/SHA256SUMS" >> "$smoke_root/assets/SHA256SUMS.duplicate"
+mv "$smoke_root/assets/SHA256SUMS.duplicate" "$smoke_root/assets/SHA256SUMS"
+if GHA_CONCURRENCY_CYCLE_ASSET_DIR="$smoke_root/assets" \
+  RUNNER_TEMP="$smoke_root/run-duplicate" \
+  "$project_root/scripts/install.sh" v0.1.1 >/dev/null 2>&1; then
+  echo "duplicate checksum entry unexpectedly accepted" >&2
+  exit 1
+fi
+
 for invalid_version in '../0.1.1' '0.1' '0.1.1.1' '0.1.x' '0..1'; do
   if GHA_CONCURRENCY_CYCLE_ASSET_DIR="$smoke_root/assets" \
     RUNNER_TEMP="$smoke_root/run" \
