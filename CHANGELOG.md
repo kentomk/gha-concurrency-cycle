@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Refresh the copy-ready composite Action example and stale-pin regression for public main `4179c989f28110a92aedb53cb58acecbdcec6fd1`.
 - Refresh the copy-ready composite Action example and stale-pin regression for public main `47bfb04ca567e92261ff5ac273ada1ee02f011fb`.
 - Refresh the copy-ready composite Action example and stale-pin regression for public main `908c006073f24ec5d1cdb7e4ffedf6bb7d21ad3f`.
 - Align the copy-ready composite Action example and publisher regression with public main `85c0903368206ca0b5564d347d2c43311bdd8011`.
