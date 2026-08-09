@@ -1,5 +1,10 @@
 # gha-concurrency-cycle status
 
+### 2026-08-09T07:31:00Z — current Action revision alignment
+
+- Broker status showed public main `eaf29c39675faa223c5dde5d94d85f6f35bb4d5c` with successful CI and release `v0.1.2`, while the README Action example and publisher regression still referenced superseded public main `d436cc6ebbaf8618c66ac61be70bc52b8e0526f3`.
+- Synchronized the copy-ready immutable Action pin and publisher regression to the broker-verified current main. Runtime behavior and adoption claims are unchanged.
+
 ### 2026-08-09T06:48:00Z — current Action revision alignment
 
 - Broker status showed public main `d436cc6ebbaf8618c66ac61be70bc52b8e0526f3` with successful CI and release `v0.1.2`, while the README Action example still referenced superseded public main `cdb7907e1a4d3201cd7ac9252c388c157569cb5c` and label `v0.1.1`.
