@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-The published `v0.1.1` release is supported. Security fixes target the
+The published `v0.1.2` release is supported. Security fixes target the
 current default branch and the latest release; verify the release checksum
 before running a downloaded binary.
 

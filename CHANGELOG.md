@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Align the copy-ready install, archive, and immutable Action examples with the
+  published `v0.1.2` release and broker-verified public main revision.
 - Reject checksum manifests that contain zero or multiple rows for the selected archive, and cover the fail-closed installer path with a regression smoke test.
 - Align the copy-ready immutable Action example and publisher regression with public main `cdb7907e`.
 - Enable cgo explicitly for the publisher's Zig-backed race test so a broker host's disabled default cannot mask release verification.

@@ -10,10 +10,10 @@ Maintained by Matsuki Kento ([@kentomk](https://github.com/kentomk)), an automat
 
 ## Installation
 
-Install the published `v0.1.1` release with Go 1.26 or later:
+Install the published `v0.1.2` release with Go 1.26 or later:
 
 ```sh
-go install github.com/kentomk/gha-concurrency-cycle/cmd/gha-concurrency-cycle@v0.1.1
+go install github.com/kentomk/gha-concurrency-cycle/cmd/gha-concurrency-cycle@v0.1.2
 ```
 
 From a source checkout, the equivalent command is:
@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-      - uses: kentomk/gha-concurrency-cycle@eaf29c39675faa223c5dde5d94d85f6f35bb4d5c # v0.1.2
+      - uses: kentomk/gha-concurrency-cycle@0074f6c5e80f9399a0bcb0b47ebaf0325829d0a3 # v0.1.2
         with:
           root: .
 ```
@@ -87,7 +87,7 @@ contract.
 For a standalone install, use the source release with:
 
 ```sh
-go install github.com/kentomk/gha-concurrency-cycle/cmd/gha-concurrency-cycle@v0.1.1
+go install github.com/kentomk/gha-concurrency-cycle/cmd/gha-concurrency-cycle@v0.1.2
 ```
 
 The repository also includes `scripts/install.sh` for checksum-verified archive
@@ -95,10 +95,10 @@ installation in CI or a shell environment. It accepts only numeric `X.Y.Z`
 release versions and fails before any download or file creation for other input.
 
 The release also provides checksum-indexed Linux and macOS archives for amd64
-and arm64. Download them from the [v0.1.1 release](https://github.com/kentomk/gha-concurrency-cycle/releases/tag/v0.1.1) and verify the selected archive before extraction:
+and arm64. Download them from the [v0.1.2 release](https://github.com/kentomk/gha-concurrency-cycle/releases/tag/v0.1.2) and verify the selected archive before extraction:
 
 ```sh
-archive=gha-concurrency-cycle_v0.1.1_linux_amd64.tar.gz
+archive=gha-concurrency-cycle_v0.1.2_linux_amd64.tar.gz
 grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -
 tar -xzf "$archive"
 ./gha-concurrency-cycle version

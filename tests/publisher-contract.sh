@@ -50,7 +50,7 @@ grep -q '@kentomk' README.md
 grep -Eiq 'AI|automated' README.md
 grep -Eq 'uses: actions/checkout@[0-9a-f]{40}([[:space:]]|$)' README.md
 grep -Eq 'uses: kentomk/gha-concurrency-cycle@[0-9a-f]{40}([[:space:]]|$)' README.md
-grep -Fq 'uses: kentomk/gha-concurrency-cycle@eaf29c39675faa223c5dde5d94d85f6f35bb4d5c # v0.1.2' README.md
+grep -Fq 'uses: kentomk/gha-concurrency-cycle@0074f6c5e80f9399a0bcb0b47ebaf0325829d0a3 # v0.1.2' README.md
 if grep -Fq 'uses: kentomk/gha-concurrency-cycle@7126695735b388399a765a9dde4398abd2f20e33' README.md; then
   echo 'publisher contract: README still pins the superseded public Action revision' >&2
   exit 1
@@ -85,14 +85,14 @@ grep -Fq "go-version: '1.26.5'" .github/workflows/ci.yml
 
 test -x scripts/publisher-gate.sh
 sh -n scripts/publisher-gate.sh
-grep -Fq 'releases/tag/v0.1.1' README.md
+grep -Fq 'releases/tag/v0.1.2' README.md
 grep -Fq 'grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -' README.md
 grep -Fq 'shasum -a 256 --check -' README.md
 grep -Fq 'SHA256SUMS' scripts/install.sh
 ! grep -Fq 'checksums.txt' scripts/install.sh
-grep -Fq 'test "$("$installed" version)" = "v0.1.1"' tests/install-script.sh
+grep -Fq 'test "$("$installed" version)" = "v0.1.2"' tests/install-script.sh
 grep -Fq 'The published' SECURITY.md
-grep -Fq 'v0.1.1' SECURITY.md
+grep -Fq 'v0.1.2' SECURITY.md
 if grep -Fq 'not published yet' SECURITY.md; then
   echo 'SECURITY.md still claims the public project is unpublished' >&2
   exit 1

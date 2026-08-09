@@ -1,5 +1,11 @@
 # gha-concurrency-cycle status
 
+### 2026-08-09T12:18:00Z — v0.1.2 distribution path alignment
+
+- Broker status confirmed public main `0074f6c5e80f9399a0bcb0b47ebaf0325829d0a3` with successful CI and complete `v0.1.2` release assets, while the copy-ready README install/archive examples and publisher regression still targeted `v0.1.1` and the previous Action revision.
+- Updated English install, archive checksum, immutable Action, SECURITY support-version, clean install smoke, and publisher contract references to `v0.1.2`; runtime behavior and adoption claims are unchanged.
+- Focused publisher contract, install smoke, clean quickstart, and full publisher gate passed. Public reflection of this local change remains to be confirmed through the broker.
+
 ### 2026-08-09T07:31:00Z — current Action revision alignment
 
 - Broker status showed public main `eaf29c39675faa223c5dde5d94d85f6f35bb4d5c` with successful CI and release `v0.1.2`, while the README Action example and publisher regression still referenced superseded public main `d436cc6ebbaf8618c66ac61be70bc52b8e0526f3`.

@@ -9,21 +9,21 @@ cleanup() {
 }
 trap cleanup EXIT HUP INT TERM
 
-SOURCE_DATE_EPOCH=0 "$project_root/scripts/package-release.sh" v0.1.1 "$smoke_root/assets"
+SOURCE_DATE_EPOCH=0 "$project_root/scripts/package-release.sh" v0.1.2 "$smoke_root/assets"
 mkdir -p "$smoke_root/run"
 installed=$(GHA_CONCURRENCY_CYCLE_ASSET_DIR="$smoke_root/assets" \
   RUNNER_TEMP="$smoke_root/run" \
-  "$project_root/scripts/install.sh" v0.1.1)
+  "$project_root/scripts/install.sh" v0.1.2)
 
 test -x "$installed"
-test "$("$installed" version)" = "v0.1.1"
+test "$("$installed" version)" = "v0.1.2"
 
 cp "$smoke_root/assets/SHA256SUMS" "$smoke_root/assets/SHA256SUMS.duplicate"
 cat "$smoke_root/assets/SHA256SUMS" >> "$smoke_root/assets/SHA256SUMS.duplicate"
 mv "$smoke_root/assets/SHA256SUMS.duplicate" "$smoke_root/assets/SHA256SUMS"
 if GHA_CONCURRENCY_CYCLE_ASSET_DIR="$smoke_root/assets" \
   RUNNER_TEMP="$smoke_root/run-duplicate" \
-  "$project_root/scripts/install.sh" v0.1.1 >/dev/null 2>&1; then
+  "$project_root/scripts/install.sh" v0.1.2 >/dev/null 2>&1; then
   echo "duplicate checksum entry unexpectedly accepted" >&2
   exit 1
 fi
