@@ -1,5 +1,10 @@
 # gha-concurrency-cycle status
 
+### 2026-08-09T06:48:00Z — current Action revision alignment
+
+- Broker status showed public main `d436cc6ebbaf8618c66ac61be70bc52b8e0526f3` with successful CI and release `v0.1.2`, while the README Action example still referenced superseded public main `cdb7907e1a4d3201cd7ac9252c388c157569cb5c` and label `v0.1.1`.
+- Synchronized the copy-ready immutable Action pin, release label, publisher regression, and publish request subject to the broker-verified current main. Runtime behavior and adoption claims are unchanged.
+
 ### 2026-08-09T05:08:00Z — ambiguous checksum manifest rejection
 
 - The archive installer previously selected the first matching checksum row, so a malformed or ambiguous `SHA256SUMS` could be accepted without a unique manifest entry.
