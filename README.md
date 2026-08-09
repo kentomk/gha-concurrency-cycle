@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-      - uses: kentomk/gha-concurrency-cycle@f54127c33f01c86589faf5b953efc74e753fc0da # v0.1.2
+      - uses: kentomk/gha-concurrency-cycle@85c0903368206ca0b5564d347d2c43311bdd8011 # v0.1.2
         with:
           root: .
 ```

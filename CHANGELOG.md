@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Align the copy-ready composite Action example and publisher regression with public main `85c0903368206ca0b5564d347d2c43311bdd8011`.
 - Make the README's selected-archive checksum quickstart reject missing or duplicate manifest rows, matching the standalone installer and publisher contract.
 - Align the copy-ready install, archive, and immutable Action examples with the
   published `v0.1.2` release and broker-verified public main revision.
