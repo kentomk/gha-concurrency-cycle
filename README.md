@@ -99,12 +99,15 @@ and arm64. Download them from the [v0.1.2 release](https://github.com/kentomk/gh
 
 ```sh
 archive=gha-concurrency-cycle_v0.1.2_linux_amd64.tar.gz
-grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -
+matching_entries=$(awk -v name="$archive" '$2 == name { count += 1 } END { print count + 0 }' SHA256SUMS)
+test "$matching_entries" -eq 1 || { echo "checksum entry must contain exactly one row for $archive" >&2; exit 2; }
+awk -v name="$archive" '$2 == name { print; exit }' SHA256SUMS | sha256sum --check --strict -
 tar -xzf "$archive"
 ./gha-concurrency-cycle version
 ```
 
-On macOS, use `shasum -a 256 --check -` instead of `sha256sum --check --strict -`.
+On macOS, keep the same unique-row check and use `shasum -a 256 --check -`
+instead of `sha256sum --check --strict -` for the final pipeline.
 Checking only the selected manifest row lets you verify one downloaded archive
 without first downloading the other three platform archives.
 

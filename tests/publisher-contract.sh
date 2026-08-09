@@ -86,7 +86,9 @@ grep -Fq "go-version: '1.26.5'" .github/workflows/ci.yml
 test -x scripts/publisher-gate.sh
 sh -n scripts/publisher-gate.sh
 grep -Fq 'releases/tag/v0.1.2' README.md
-grep -Fq 'grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -' README.md
+grep -Fq 'matching_entries=$(awk -v name="$archive"' README.md
+grep -Fq 'test "$matching_entries" -eq 1' README.md
+grep -Fq 'awk -v name="$archive" '\''$2 == name { print; exit }'\'' SHA256SUMS | sha256sum --check --strict -' README.md
 grep -Fq 'shasum -a 256 --check -' README.md
 grep -Fq 'SHA256SUMS' scripts/install.sh
 ! grep -Fq 'checksums.txt' scripts/install.sh

@@ -1,5 +1,20 @@
 # gha-concurrency-cycle status
 
+### 2026-08-09T15:42:00Z — README checksum contract alignment
+
+- The standalone installer already rejected missing or duplicate `SHA256SUMS` rows, but the copy-ready README pipeline selected every matching row and could accept an ambiguous manifest when duplicate rows had the same digest.
+- Added an explicit unique-row check and first-match checksum pipeline to the English quickstart, with publisher-contract regression coverage. Runtime analyzer behavior and release contents are unchanged.
+
+### 2026-08-09T12:50:05Z — 14-day adoption review
+
+- Broker status remains public main `ed243d4cef5241cc09649aa0eb363ed00f1feee4` with successful CI, no open Issue/PR, and complete v0.1.2 release assets; 14-day traffic remains clones 85, unique clones 43, and release downloads 12.
+- No verified external use, independent adopter, user report, or runtime regression was found. Keep trial/weak and healthy/monitor; schedule the next review for 2026-08-23.
+
+### 2026-08-09T12:29:00Z — v0.1.2 distribution reflection confirmed
+
+- Broker status now shows public main `ed243d4cef5241cc09649aa0eb363ed00f1feee4` with successful CI, no open Issue/PR, and complete v0.1.2 release assets. This reflects the prior local `ebad988` distribution-path repair.
+- No additional source change was needed. Direct external adoption remains unconfirmed, so the project stays trial/weak with healthy/monitor lifecycle.
+
 ### 2026-08-09T12:18:00Z — v0.1.2 distribution path alignment
 
 - Broker status confirmed public main `0074f6c5e80f9399a0bcb0b47ebaf0325829d0a3` with successful CI and complete `v0.1.2` release assets, while the copy-ready README install/archive examples and publisher regression still targeted `v0.1.1` and the previous Action revision.

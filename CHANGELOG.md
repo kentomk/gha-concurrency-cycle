@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Make the README's selected-archive checksum quickstart reject missing or duplicate manifest rows, matching the standalone installer and publisher contract.
 - Align the copy-ready install, archive, and immutable Action examples with the
   published `v0.1.2` release and broker-verified public main revision.
 - Reject checksum manifests that contain zero or multiple rows for the selected archive, and cover the fail-closed installer path with a regression smoke test.
