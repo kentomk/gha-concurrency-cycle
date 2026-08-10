@@ -115,7 +115,11 @@ grep -Fq 'unsafe_member=$(tar -tzf "$archive" | awk' README.md
 grep -Fq 'archive contains an unsafe member path' README.md
 grep -Fq 'extract_dir=$(mktemp -d)' README.md
 grep -Fq 'tar -xzf "$archive" -C "$extract_dir"' README.md
+grep -Fq 'expected_binary="$extract_dir/gha-concurrency-cycle"' README.md
+grep -Fq 'test -f "$expected_binary" && test ! -L "$expected_binary"' README.md
 grep -Fq 'unsafe_member=$(tar -tzf "$archive" | awk' scripts/install.sh
+grep -Fq 'expected_binary="$install_root/gha-concurrency-cycle"' scripts/install.sh
+grep -Fq '[ -L "$expected_binary" ]' scripts/install.sh
 grep -Fq 'shasum -a 256 --check -' README.md
 grep -Fq 'SHA256SUMS' scripts/install.sh
 ! grep -Fq 'checksums.txt' scripts/install.sh

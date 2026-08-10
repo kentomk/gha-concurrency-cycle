@@ -1,5 +1,13 @@
 # gha-concurrency-cycle status
 
+### 2026-08-10T09:34:00Z — reject symlink archive payloads before execution
+
+- The standalone installer and copy-ready archive example now require the
+  extracted `gha-concurrency-cycle` binary to be a regular non-symlink file
+  before setting execute permission or running it.
+- Added publisher-contract coverage for the regular-file boundary. Local
+  quality and broker publication remain pending for this change.
+
 ### 2026-08-10T06:30:00Z — reject unsafe archive members before extraction
 
 - The standalone installer now inspects tar members after checksum verification

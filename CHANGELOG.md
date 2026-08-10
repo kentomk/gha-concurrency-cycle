@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Require the extracted archive binary to be a regular non-symlink file before
+  the standalone installer or copy-ready verification example executes it.
+
 - Reject absolute or parent-directory tar members before extracting a
   checksum-verified archive, with matching README and publisher-contract
   coverage.

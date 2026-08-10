@@ -69,5 +69,10 @@ if [ -n "$unsafe_member" ]; then
 fi
 
 tar -xzf "$archive" -C "$install_root"
-chmod +x "$install_root/gha-concurrency-cycle"
-printf '%s\n' "$install_root/gha-concurrency-cycle"
+expected_binary="$install_root/gha-concurrency-cycle"
+if [ ! -f "$expected_binary" ] || [ -L "$expected_binary" ]; then
+  echo "archive binary is not a regular file" >&2
+  exit 2
+fi
+chmod +x "$expected_binary"
+printf '%s\n' "$expected_binary"

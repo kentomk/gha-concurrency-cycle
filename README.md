@@ -109,7 +109,9 @@ test -z "$unsafe_member" || { echo "archive contains an unsafe member path" >&2;
 extract_dir=$(mktemp -d)
 trap 'rm -rf "$extract_dir"' EXIT HUP INT TERM
 tar -xzf "$archive" -C "$extract_dir"
-"$extract_dir/gha-concurrency-cycle" version
+expected_binary="$extract_dir/gha-concurrency-cycle"
+test -f "$expected_binary" && test ! -L "$expected_binary" || { echo 'archive binary is not a regular file' >&2; exit 2; }
+"$expected_binary" version
 ```
 
 On macOS, keep the same unique-row check and use `shasum -a 256 --check -`
