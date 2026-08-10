@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Reject absolute or parent-directory tar members before extracting a
+  checksum-verified archive, with matching README and publisher-contract
+  coverage.
 - Refresh the copy-ready composite Action example and stale-pin regression for
   public main `35418343ab70907e69e0ce0f2293dc2e80bbdede` after the live CI check.
 - Refresh the copy-ready composite Action example and stale-pin regression for public main `4179c989f28110a92aedb53cb58acecbdcec6fd1`.

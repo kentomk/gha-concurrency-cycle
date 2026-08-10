@@ -104,6 +104,8 @@ archive=gha-concurrency-cycle_v0.1.2_linux_amd64.tar.gz
 matching_entries=$(awk -v name="$archive" '$2 == name { count += 1 } END { print count + 0 }' SHA256SUMS)
 test "$matching_entries" -eq 1 || { echo "checksum entry must contain exactly one row for $archive" >&2; exit 2; }
 awk -v name="$archive" '$2 == name { print; exit }' SHA256SUMS | sha256sum --check --strict -
+unsafe_member=$(tar -tzf "$archive" | awk '/(^|\/)\.\.(\/|$)|^\// { print; exit }')
+test -z "$unsafe_member" || { echo "archive contains an unsafe member path" >&2; exit 2; }
 tar -xzf "$archive"
 ./gha-concurrency-cycle version
 ```

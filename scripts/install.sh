@@ -62,6 +62,12 @@ if [ "$actual" != "$expected" ]; then
   exit 2
 fi
 
+unsafe_member=$(tar -tzf "$archive" | awk '/(^|\/)\.\.(\/|$)|^\// { print; exit }')
+if [ -n "$unsafe_member" ]; then
+  echo "archive contains an unsafe member path" >&2
+  exit 2
+fi
+
 tar -xzf "$archive" -C "$install_root"
 chmod +x "$install_root/gha-concurrency-cycle"
 printf '%s\n' "$install_root/gha-concurrency-cycle"

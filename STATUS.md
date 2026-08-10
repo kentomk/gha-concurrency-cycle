@@ -1,5 +1,14 @@
 # gha-concurrency-cycle status
 
+### 2026-08-10T06:30:00Z — reject unsafe archive members before extraction
+
+- The standalone installer now inspects tar members after checksum verification
+  and rejects absolute or `..` paths before extraction. The README's selected
+  archive example states the same fail-closed boundary.
+- Added publisher-contract coverage for the installer and copy-ready guidance.
+  Analyzer behavior, release contents, support matrix, and adoption claims are
+  unchanged.
+
 ### 2026-08-10T01:40:43Z — make first-screen fit selection explicit
 
 - Added concise `Use this when` and `Do not use it for` guidance immediately after the problem statement, distinguishing same-repository reusable-workflow deadlock preflight from job-level concurrency, cross-repository workflows, dynamic expressions, and general Actions linting.
