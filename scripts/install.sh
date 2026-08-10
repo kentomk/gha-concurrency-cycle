@@ -71,11 +71,19 @@ if [ -n "$unsafe_member" ]; then
   exit 2
 fi
 
-tar -xzf "$archive" -C "$install_root"
-expected_binary="$install_root/gha-concurrency-cycle"
+extract_dir=$(mktemp -d "$install_root/.extract.XXXXXX")
+cleanup() {
+  chmod -R u+w "$extract_dir" 2>/dev/null || true
+  rm -rf "$extract_dir"
+}
+trap cleanup EXIT HUP INT TERM
+tar -xzf "$archive" -C "$extract_dir"
+expected_binary="$extract_dir/gha-concurrency-cycle"
 if [ ! -f "$expected_binary" ] || [ -L "$expected_binary" ]; then
   echo "archive binary is not a regular file" >&2
   exit 2
 fi
-chmod +x "$expected_binary"
-printf '%s\n' "$expected_binary"
+staged_binary="$install_root/.gha-concurrency-cycle.new"
+install -m 0755 "$expected_binary" "$staged_binary"
+mv -f "$staged_binary" "$install_root/gha-concurrency-cycle"
+printf '%s\n' "$install_root/gha-concurrency-cycle"

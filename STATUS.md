@@ -1,5 +1,14 @@
 # gha-concurrency-cycle status
 
+### 2026-08-10T13:42:00Z — stage archive extraction before installation
+
+- `scripts/install.sh` now extracts into a cleaned temporary directory after
+  checksum and archive-member checks, verifies the regular binary there, and
+  atomically replaces the installed binary through a `.new` path.
+- Publisher-contract coverage locks the staged extraction and replacement
+  boundary. Analyzer behavior, release assets, and adoption claims are
+  unchanged.
+
 ### 2026-08-10T12:30:00Z — make archive checksum verification portable
 
 - The copy-ready archive example now selects `sha256sum` on Linux or

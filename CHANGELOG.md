@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Stage verified archive extraction in a temporary directory and atomically
+  replace the installed binary, avoiding partial installation trees after an
+  interrupted or failed extraction.
+
 - Make the copy-ready archive verifier select `sha256sum` or `shasum -a 256`
   automatically, and fail closed when neither checksum tool is available.
 

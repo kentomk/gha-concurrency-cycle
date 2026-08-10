@@ -122,8 +122,13 @@ grep -Fq 'tar -xzf "$archive" -C "$extract_dir"' README.md
 grep -Fq 'expected_binary="$extract_dir/gha-concurrency-cycle"' README.md
 grep -Fq 'test -f "$expected_binary" && test ! -L "$expected_binary"' README.md
 grep -Fq 'unsafe_member=$(tar -tzf "$archive" | awk' scripts/install.sh
-grep -Fq 'expected_binary="$install_root/gha-concurrency-cycle"' scripts/install.sh
+grep -Fq 'expected_binary="$extract_dir/gha-concurrency-cycle"' scripts/install.sh
 grep -Fq '[ -L "$expected_binary" ]' scripts/install.sh
+grep -Fq 'extract_dir=$(mktemp -d "$install_root/.extract.XXXXXX")' scripts/install.sh
+grep -Fq 'tar -xzf "$archive" -C "$extract_dir"' scripts/install.sh
+grep -Fq 'staged_binary="$install_root/.gha-concurrency-cycle.new"' scripts/install.sh
+grep -Fq 'install -m 0755 "$expected_binary" "$staged_binary"' scripts/install.sh
+grep -Fq 'mv -f "$staged_binary" "$install_root/gha-concurrency-cycle"' scripts/install.sh
 grep -Fq 'shasum -a 256 --check -' README.md
 grep -Fq 'SHA256SUMS' scripts/install.sh
 grep -Fq 'need sha256sum or shasum for checksum verification' scripts/install.sh
