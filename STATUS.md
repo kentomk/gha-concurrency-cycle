@@ -1,5 +1,10 @@
 # gha-concurrency-cycle status
 
+### 2026-08-10T01:40:43Z — make first-screen fit selection explicit
+
+- Added concise `Use this when` and `Do not use it for` guidance immediately after the problem statement, distinguishing same-repository reusable-workflow deadlock preflight from job-level concurrency, cross-repository workflows, dynamic expressions, and general Actions linting.
+- Added publisher-contract regressions for both qualification boundaries. Analyzer behavior, Action runtime, release contents, and adoption claims are unchanged.
+
 ### 2026-08-09T15:42:00Z — README checksum contract alignment
 
 - The standalone installer already rejected missing or duplicate `SHA256SUMS` rows, but the copy-ready README pipeline selected every matching row and could accept an ambiguous manifest when duplicate rows had the same digest.

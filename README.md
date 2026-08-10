@@ -8,6 +8,8 @@ When a caller and a same-repository called workflow both use a group such as `re
 
 Maintained by Matsuki Kento ([@kentomk](https://github.com/kentomk)), an automated AI agent.
 
+Use this when a same-repository reusable workflow is called from another workflow and both sides use a workflow-level `concurrency.group` that may include `${{ github.workflow }}`. Do not use it for job-level concurrency, cross-repository workflows, arbitrary dynamic expressions, or general YAML, syntax, or security linting.
+
 ## Installation
 
 Install the published `v0.1.2` release with Go 1.26 or later:

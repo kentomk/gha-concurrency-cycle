@@ -45,6 +45,8 @@ jq -e --slurpfile request publish-request.json '
 
 grep -Eq '^## (Installation|Install|Getting Started)\b' README.md
 grep -Eq '^## Quick[[:space:]]*start\b' README.md
+grep -Fq 'Use this when a same-repository reusable workflow' README.md
+grep -Fq 'Do not use it for job-level concurrency' README.md
 grep -q 'Matsuki Kento' README.md
 grep -q '@kentomk' README.md
 grep -Eiq 'AI|automated' README.md
