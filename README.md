@@ -106,8 +106,10 @@ test "$matching_entries" -eq 1 || { echo "checksum entry must contain exactly on
 awk -v name="$archive" '$2 == name { print; exit }' SHA256SUMS | sha256sum --check --strict -
 unsafe_member=$(tar -tzf "$archive" | awk '/(^|\/)\.\.(\/|$)|^\// { print; exit }')
 test -z "$unsafe_member" || { echo "archive contains an unsafe member path" >&2; exit 2; }
-tar -xzf "$archive"
-./gha-concurrency-cycle version
+extract_dir=$(mktemp -d)
+trap 'rm -rf "$extract_dir"' EXIT HUP INT TERM
+tar -xzf "$archive" -C "$extract_dir"
+"$extract_dir/gha-concurrency-cycle" version
 ```
 
 On macOS, keep the same unique-row check and use `shasum -a 256 --check -`
