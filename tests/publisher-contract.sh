@@ -110,7 +110,11 @@ sh -n scripts/publisher-gate.sh
 grep -Fq 'releases/tag/v0.1.2' README.md
 grep -Fq 'matching_entries=$(awk -v name="$archive"' README.md
 grep -Fq 'test "$matching_entries" -eq 1' README.md
+grep -Fq 'if command -v sha256sum >/dev/null 2>&1; then' README.md
 grep -Fq 'awk -v name="$archive" '\''$2 == name { print; exit }'\'' SHA256SUMS | sha256sum --check --strict -' README.md
+grep -Fq 'elif command -v shasum >/dev/null 2>&1; then' README.md
+grep -Fq 'awk -v name="$archive" '\''$2 == name { print; exit }'\'' SHA256SUMS | shasum -a 256 --check -' README.md
+grep -Fq "need sha256sum or shasum for checksum verification" README.md
 grep -Fq 'unsafe_member=$(tar -tzf "$archive" | awk' README.md
 grep -Fq 'archive contains an unsafe member path' README.md
 grep -Fq 'extract_dir=$(mktemp -d)' README.md
@@ -122,6 +126,7 @@ grep -Fq 'expected_binary="$install_root/gha-concurrency-cycle"' scripts/install
 grep -Fq '[ -L "$expected_binary" ]' scripts/install.sh
 grep -Fq 'shasum -a 256 --check -' README.md
 grep -Fq 'SHA256SUMS' scripts/install.sh
+grep -Fq 'need sha256sum or shasum for checksum verification' scripts/install.sh
 ! grep -Fq 'checksums.txt' scripts/install.sh
 grep -Fq 'test "$("$installed" version)" = "v0.1.2"' tests/install-script.sh
 grep -Fq 'The published' SECURITY.md

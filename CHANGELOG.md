@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Make the copy-ready archive verifier select `sha256sum` or `shasum -a 256`
+  automatically, and fail closed when neither checksum tool is available.
+
 - Require the extracted archive binary to be a regular non-symlink file before
   the standalone installer or copy-ready verification example executes it.
 

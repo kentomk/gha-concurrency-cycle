@@ -103,7 +103,14 @@ and arm64. Download them from the [v0.1.2 release](https://github.com/kentomk/gh
 archive=gha-concurrency-cycle_v0.1.2_linux_amd64.tar.gz
 matching_entries=$(awk -v name="$archive" '$2 == name { count += 1 } END { print count + 0 }' SHA256SUMS)
 test "$matching_entries" -eq 1 || { echo "checksum entry must contain exactly one row for $archive" >&2; exit 2; }
-awk -v name="$archive" '$2 == name { print; exit }' SHA256SUMS | sha256sum --check --strict -
+if command -v sha256sum >/dev/null 2>&1; then
+  awk -v name="$archive" '$2 == name { print; exit }' SHA256SUMS | sha256sum --check --strict -
+elif command -v shasum >/dev/null 2>&1; then
+  awk -v name="$archive" '$2 == name { print; exit }' SHA256SUMS | shasum -a 256 --check -
+else
+  echo 'need sha256sum or shasum for checksum verification' >&2
+  exit 2
+fi
 unsafe_member=$(tar -tzf "$archive" | awk '/(^|\/)\.\.(\/|$)|^\// { print; exit }')
 test -z "$unsafe_member" || { echo "archive contains an unsafe member path" >&2; exit 2; }
 extract_dir=$(mktemp -d)
@@ -114,9 +121,8 @@ test -f "$expected_binary" && test ! -L "$expected_binary" || { echo 'archive bi
 "$expected_binary" version
 ```
 
-On macOS, keep the same unique-row check and use `shasum -a 256 --check -`
-instead of `sha256sum --check --strict -` for the final pipeline.
-Checking only the selected manifest row lets you verify one downloaded archive
+The checksum example selects `sha256sum` on Linux or `shasum -a 256` on macOS
+and fails closed if neither verifier is available. Checking only the selected manifest row lets you verify one downloaded archive
 without first downloading the other three platform archives.
 
 ## Supported in this increment

@@ -54,8 +54,11 @@ expected=$(awk -v name="$asset" '$2 == name { print $1; exit }' "$checksums")
 
 if command -v sha256sum >/dev/null 2>&1; then
   actual=$(sha256sum "$archive" | awk '{ print $1 }')
-else
+elif command -v shasum >/dev/null 2>&1; then
   actual=$(shasum -a 256 "$archive" | awk '{ print $1 }')
+else
+  echo "need sha256sum or shasum for checksum verification" >&2
+  exit 2
 fi
 if [ "$actual" != "$expected" ]; then
   echo "checksum mismatch for $asset" >&2

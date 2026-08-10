@@ -1,5 +1,13 @@
 # gha-concurrency-cycle status
 
+### 2026-08-10T12:30:00Z — make archive checksum verification portable
+
+- The copy-ready archive example now selects `sha256sum` on Linux or
+  `shasum -a 256` on macOS and fails closed when neither verifier exists.
+- The standalone installer and publisher contract use the same explicit
+  verifier boundary. Analyzer behavior, release assets, and adoption claims
+  are unchanged; broker publication and public CI remain required.
+
 ### 2026-08-10T09:34:00Z — reject symlink archive payloads before execution
 
 - The standalone installer and copy-ready archive example now require the
